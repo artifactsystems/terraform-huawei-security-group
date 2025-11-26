@@ -41,5 +41,3 @@ The following topics are planned for future improvement:
 - [ ] Wrapper composition enhancements (advanced orchestration, easier multiple group usage)
 - [ ] Comprehensive example README files for each usage scenario
 - [ ] Completion of all examples and improving variety/coverage of use cases
-
-

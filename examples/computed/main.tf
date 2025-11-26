@@ -1,5 +1,5 @@
 provider "huaweicloud" {
-  region = "ap-southeast-3" # Change to your region
+  region = "tr-west-1" # Change to your region
 }
 
 ###########################
