@@ -41,3 +41,9 @@ The following topics are planned for future improvement:
 - [ ] Wrapper composition enhancements (advanced orchestration, easier multiple group usage)
 - [ ] Comprehensive example README files for each usage scenario
 - [ ] Completion of all examples and improving variety/coverage of use cases
+
+## Contributing
+
+Report issues/questions/feature requests in the [issues](https://github.com/artifactsystems/terraform-huawei-security-group/issues/new) section.
+
+Full contributing [guidelines are covered here](.github/CONTRIBUTING.md).
