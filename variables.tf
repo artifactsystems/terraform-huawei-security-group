@@ -94,6 +94,21 @@ variable "ingress_cidr_blocks" {
   default     = []
 }
 
+variable "ingress_with_ports" {
+  description = "List of ingress rules using 'ports' field (supports priority, action, discontinuous ports)"
+  type = list(object({
+    ports            = optional(string, null)
+    protocol         = optional(string, null)
+    ethertype        = optional(string, "IPv4")
+    remote_ip_prefix = optional(string, null)
+    remote_group_id  = optional(string, null)
+    description      = optional(string, "Ingress Rule")
+    priority         = optional(number, 1)
+    action           = optional(string, "allow")
+  }))
+  default = []
+}
+
 ###############################################################
 # Computed Ingress
 ###############################################################
@@ -182,6 +197,21 @@ variable "egress_cidr_blocks" {
   description = "List of IPv4 CIDR ranges to use on all egress rules"
   type        = list(string)
   default     = ["0.0.0.0/0"]
+}
+
+variable "egress_with_ports" {
+  description = "List of egress rules using 'ports' field (supports priority, action, discontinuous ports)"
+  type = list(object({
+    ports            = optional(string, null)
+    protocol         = optional(string, null)
+    ethertype        = optional(string, "IPv4")
+    remote_ip_prefix = optional(string, null)
+    remote_group_id  = optional(string, null)
+    description      = optional(string, "Egress Rule")
+    priority         = optional(number, 1)
+    action           = optional(string, "allow")
+  }))
+  default = []
 }
 
 ###############################################################

@@ -620,3 +620,42 @@ resource "huaweicloud_networking_secgroup_rule" "computed_egress_with_self" {
 ###############################################################
 # End of computed egress
 ###############################################################
+
+###############################################################
+# Ingress - Ports field (supports priority and action)
+###############################################################
+resource "huaweicloud_networking_secgroup_rule" "ingress_with_ports" {
+  count = local.create ? length(var.ingress_with_ports) : 0
+
+  security_group_id = local.this_sg_id
+  direction         = "ingress"
+
+  ethertype        = var.ingress_with_ports[count.index].ethertype
+  protocol         = var.ingress_with_ports[count.index].protocol
+  ports            = var.ingress_with_ports[count.index].ports
+  remote_ip_prefix = var.ingress_with_ports[count.index].remote_ip_prefix
+  remote_group_id  = var.ingress_with_ports[count.index].remote_group_id == "self" ? local.this_sg_id : var.ingress_with_ports[count.index].remote_group_id
+  description      = var.ingress_with_ports[count.index].description
+  priority         = var.ingress_with_ports[count.index].priority
+  action           = var.ingress_with_ports[count.index].action
+}
+
+###############################################################
+# Egress - Ports field (supports priority and action)
+###############################################################
+resource "huaweicloud_networking_secgroup_rule" "egress_with_ports" {
+  count = local.create ? length(var.egress_with_ports) : 0
+
+  security_group_id = local.this_sg_id
+  direction         = "egress"
+
+  ethertype        = var.egress_with_ports[count.index].ethertype
+  protocol         = var.egress_with_ports[count.index].protocol
+  ports            = var.egress_with_ports[count.index].ports
+  remote_ip_prefix = var.egress_with_ports[count.index].remote_ip_prefix
+  remote_group_id  = var.egress_with_ports[count.index].remote_group_id == "self" ? local.this_sg_id : var.egress_with_ports[count.index].remote_group_id
+  description      = var.egress_with_ports[count.index].description
+  priority         = var.egress_with_ports[count.index].priority
+  action           = var.egress_with_ports[count.index].action
+}
+
