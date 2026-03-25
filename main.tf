@@ -658,4 +658,3 @@ resource "huaweicloud_networking_secgroup_rule" "egress_with_ports" {
   priority         = var.egress_with_ports[count.index].priority
   action           = var.egress_with_ports[count.index].action
 }
-
